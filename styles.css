@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+body {
+    background-color: #fff3e6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #ff6b6b;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#itemInput {
+    flex: 1;
+    padding: 15px;
+    border: 3px solid #4ecdc4;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+.image-input {
+    padding: 10px;
+}
+
+.add-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4ecdc4;
+    color: white;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+}
+
+.shopping-list {
+    list-style: none;
+    background-color: white;
+    border: 3px solid #ffe66d;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #eee;
+    gap: 10px;
+}
+
+.item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.item-text {
+    flex: 1;
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    background: transparent;
+}
+
+.item-text:focus {
+    outline: 2px solid #4ecdc4;
+    border-radius: 5px;
+}
+
+.remove-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.remove-btn:hover {
+    transform: scale(1.1);
+}
+
+.print-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 15px 30px;
+    background-color: #ff9f1c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.print-btn:hover {
+    transform: scale(1.05);
+}
