@@ -6,17 +6,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const printButton = document.getElementById('printButton');
     const themeButtons = document.querySelectorAll('.theme-btn');
 
-    // Gestion des thèmes
+    // Gestion des thèmes - Version corrigée
     themeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Enlever tous les thèmes existants
-            document.body.className = '';
-            // Ajouter le nouveau thème si ce n'est pas le thème blanc (par défaut)
-            if (button.dataset.theme !== 'white') {
-                document.body.classList.add(button.dataset.theme);
+        button.addEventListener('click', function() {
+            const theme = this.getAttribute('data-theme');
+            document.documentElement.className = ''; // Réinitialiser les thèmes
+            if (theme !== 'white') {
+                document.documentElement.classList.add(`${theme}-theme`);
             }
+            // Sauvegarder le thème dans le localStorage
+            localStorage.setItem('currentTheme', theme);
         });
     });
+
+    // Charger le thème sauvegardé au chargement de la page
+    const savedTheme = localStorage.getItem('currentTheme');
+    if (savedTheme && savedTheme !== 'white') {
+        document.documentElement.classList.add(`${savedTheme}-theme`);
+    }
 
     // Ajouter un item à la liste
     function addItem() {
@@ -79,17 +86,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Générer et télécharger le PDF
+    // Générer et télécharger le PDF - Version corrigée
     printButton.onclick = function() {
-        const element = document.querySelector('.container');
+        // Créer une copie temporaire de la liste pour le PDF
+        const tempDiv = document.createElement('div');
+        tempDiv.style.width = '100%';
+        tempDiv.style.padding = '20px';
+        tempDiv.style.boxSizing = 'border-box';
+
+        // Ajouter un titre au PDF
+        const title = document.createElement('h2');
+        title.textContent = 'Ma Liste d\'Achats';
+        title.style.textAlign = 'center';
+        title.style.marginBottom = '20px';
+        title.style.fontFamily = 'Comic Sans MS, cursive';
+        tempDiv.appendChild(title);
+
+        // Copier uniquement la liste
+        const listClone = shoppingList.cloneNode(true);
+        
+        // Supprimer les boutons de suppression de la copie
+        listClone.querySelectorAll('.remove-btn').forEach(btn => btn.remove());
+        
+        // Rendre les champs de texte non éditables dans le PDF
+        listClone.querySelectorAll('.item-text').forEach(input => {
+            const text = document.createElement('span');
+            text.textContent = input.value;
+            text.style.fontSize = '14px';
+            text.style.fontFamily = 'Comic Sans MS, cursive';
+            input.parentNode.replaceChild(text, input);
+        });
+
+        tempDiv.appendChild(listClone);
+
+        // Options pour le PDF
         const opt = {
             margin: 1,
             filename: 'ma-liste-achats.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { scale: 2 },
-            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
-        html2pdf().set(opt).from(element).save();
+        // Générer le PDF avec le contenu temporaire
+        html2pdf().set(opt).from(tempDiv).save();
     };
 });
