@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const addButton = document.getElementById('addButton');
     const shoppingList = document.getElementById('shoppingList');
     const printButton = document.getElementById('printButton');
+    const themeButtons = document.querySelectorAll('.theme-btn');
+
+    // Gestion des thèmes
+    themeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Enlever tous les thèmes existants
+            document.body.className = '';
+            // Ajouter le nouveau thème si ce n'est pas le thème blanc (par défaut)
+            if (button.dataset.theme !== 'white') {
+                document.body.classList.add(button.dataset.theme);
+            }
+        });
+    });
 
     // Ajouter un item à la liste
     function addItem() {
