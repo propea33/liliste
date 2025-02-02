@@ -5,6 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const shoppingList = document.getElementById('shoppingList');
     const printButton = document.getElementById('printButton');
     const themeButtons = document.querySelectorAll('.theme-btn');
+    const uploadBtn = document.querySelector('.upload-btn');
+
+    // Mettre à jour le texte du bouton quand une image est sélectionnée
+    imageInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            uploadBtn.textContent = '✅ image';
+            // Réinitialiser le texte après 2 secondes
+            setTimeout(() => {
+                uploadBtn.innerHTML = 'image 🖼️';
+            }, 2000);
+        }
+    });
 
     // Gestion des thèmes - Version corrigée
     themeButtons.forEach(button => {
