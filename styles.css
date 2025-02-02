@@ -13,8 +13,8 @@
     --print-btn-color: #ff9f1c;
 }
 
-/* Thèmes de couleurs */
-body.pink-theme {
+/* Thèmes de couleurs - Version corrigée */
+:root.pink-theme {
     --bg-color: #ffe6f0;
     --primary-color: #ff69b4;
     --secondary-color: #ff1493;
@@ -22,7 +22,7 @@ body.pink-theme {
     --print-btn-color: #ff69b4;
 }
 
-body.blue-theme {
+:root.blue-theme {
     --bg-color: #e6f3ff;
     --primary-color: #4169e1;
     --secondary-color: #1e90ff;
@@ -30,7 +30,7 @@ body.blue-theme {
     --print-btn-color: #4169e1;
 }
 
-body.green-theme {
+:root.green-theme {
     --bg-color: #e6ffe6;
     --primary-color: #32cd32;
     --secondary-color: #3cb371;
@@ -38,7 +38,7 @@ body.green-theme {
     --print-btn-color: #32cd32;
 }
 
-body.purple-theme {
+:root.purple-theme {
     --bg-color: #f3e6ff;
     --primary-color: #9370db;
     --secondary-color: #8a2be2;
