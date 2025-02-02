@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Liste d'Achats</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 Ma Super Liste d'Achats! 🛒</h1>
+        
+        <div class="input-section">
+            <input type="text" id="itemInput" placeholder="Qu'est-ce que tu veux acheter?">
+            <input type="file" id="imageInput" accept="image/*" class="image-input">
+            <button id="addButton" class="add-btn">+</button>
+        </div>
+
+        <ul id="shoppingList" class="shopping-list"></ul>
+
+        <button id="printButton" class="print-btn">IMPRIMER MA LISTE 🖨️</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
